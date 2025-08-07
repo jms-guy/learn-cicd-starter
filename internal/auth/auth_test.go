@@ -11,32 +11,32 @@ import (
 
 func TestGetAPIKey(t *testing.T) {
 	tests := []struct {
-		name 		string
-		inputHeaders string
-		setHeader bool
-		expectedString	string
-		expectedError 	error 
+		name           string
+		inputHeaders   string
+		setHeader      bool
+		expectedString string
+		expectedError  error
 	}{
 		{
-			name: "successfully get api key",
-			inputHeaders: "ApiKey testKey",
-			setHeader: true,
+			name:           "successfully get api key",
+			inputHeaders:   "ApiKey testKey",
+			setHeader:      true,
 			expectedString: "testKey",
-			expectedError: nil,
+			expectedError:  nil,
 		},
 		{
-			name: "fail with no auth header",
-			inputHeaders: "",
-			setHeader: false,
+			name:           "fail with no auth header",
+			inputHeaders:   "",
+			setHeader:      false,
 			expectedString: "",
-			expectedError: auth.ErrNoAuthHeaderIncluded,
+			expectedError:  auth.ErrNoAuthHeaderIncluded,
 		},
 		{
-			name: "fail with malformed auth header",
-			inputHeaders: "ApiKey",
-			setHeader: true,
+			name:           "fail with malformed auth header",
+			inputHeaders:   "ApiKey",
+			setHeader:      true,
 			expectedString: "",
-			expectedError: errors.New("malformed authorization header"),
+			expectedError:  errors.New("malformed authorization header"),
 		},
 	}
 
